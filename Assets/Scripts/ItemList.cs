@@ -15,7 +15,7 @@ public class ItemList : MonoBehaviour {
 	}
 
 	public Item getRandomItem() {
-		return items[Random.Range (0, items.Length - 1)];
+		return items[Random.Range (0, items.Length)];
 	}
 
 	// Get random item that isn't "i"
