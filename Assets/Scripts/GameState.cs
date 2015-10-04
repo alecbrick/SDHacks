@@ -21,6 +21,7 @@ public class GameState : MonoBehaviour {
 	}
 
 	public void nextItem() {
+		items.addItem ();
 		curr = items.getRandomItem (curr);
 		textBox.text = curr.name;
 	}

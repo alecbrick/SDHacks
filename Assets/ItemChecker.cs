@@ -20,7 +20,6 @@ public class ItemChecker : MonoBehaviour {
 		}
 		Item item = (Item)other.GetComponent<Item> ();
 		if (item.Equals (state.getCurrItem ())) {
-			Debug.Log ("Yeah!");
 			this.state.nextItem ();
 		}
 	}
