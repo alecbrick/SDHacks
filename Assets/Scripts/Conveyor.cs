@@ -25,7 +25,7 @@ public class Conveyor : MonoBehaviour {
 				Destroy (i.gameObject);
 			}
 			if (i.transform.position.x > rbound && (i.GetComponent<Rigidbody>() == null)) {
-				i.gameObject.AddComponent<Rigidbody>();
+				i.gameObject.GetComponent<BoxCollider>().isTrigger = true;
 			}
 		}
 		items = newItems;
