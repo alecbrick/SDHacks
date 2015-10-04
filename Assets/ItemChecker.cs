@@ -22,7 +22,7 @@ public class ItemChecker : MonoBehaviour {
 
 		PhotonView pView = state.GetComponent<PhotonView> ();
 
-		if (item.name.Equals (state.getCurrSSItem ())) {
+		if (item.name.Equals (state.getCurrItem ())) {
 			pView.RPC ("nextItem", PhotonTargets.Others);
 		}
 	}
