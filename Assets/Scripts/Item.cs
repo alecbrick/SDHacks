@@ -14,4 +14,8 @@ public class Item : MonoBehaviour {
 	void Update () {
 	
 	}
+	
+	public bool Equals (Item i) {
+		return this.name.Equals (i.name);
+	}
 }
