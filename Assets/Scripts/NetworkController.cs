@@ -34,6 +34,8 @@ public class NetworkController : Photon.PunBehaviour
         Debug.Log("Can't join random room!");
         PhotonNetwork.CreateRoom(null);
     }
+
+
     //void OnJoinedRoom()
     //{
     //PhotonNetwork.Instantiate("NetworkedPlayer", Vector3.zero, Quaternion.identity, 0);

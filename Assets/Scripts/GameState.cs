@@ -8,25 +8,39 @@ public class GameState : MonoBehaviour {
 	public ItemList items;
 
 	private Item curr;
+	private Item theirs;
 
 	// Use this for initialization
 	void Start () {
 		curr = items.getRandomItem ();
-		textBox.text = curr.name;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (theirs != null) {
+			textBox.text = theirs.name;
+		}
 	}
 
+	[PunRPC]
 	public void nextItem() {
 		items.addItem ();
 		curr = items.getRandomItem (curr);
-		textBox.text = curr.name;
 	}
-
+	
 	public Item getCurrItem() {
 		return curr;
+	}
+
+	public Item getTheirItem() {
+		return theirs;
+	}
+
+	void OnProtonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
+		if (stream.isWriting) {
+			stream.SendNext (curr);
+		} else {
+			theirs = (Item) stream.ReceiveNext();
+		}
 	}
 }

@@ -19,8 +19,11 @@ public class ItemChecker : MonoBehaviour {
 			return;
 		}
 		Item item = (Item)other.GetComponent<Item> ();
-		if (item.Equals (state.getCurrItem ())) {
-			this.state.nextItem ();
+
+		PhotonView pView = state.GetComponent<PhotonView> ();
+
+		if (item.Equals (state.getTheirItem ())) {
+			pView.RPC ("nextItem", PhotonTargets.Others);
 		}
 	}
 }
