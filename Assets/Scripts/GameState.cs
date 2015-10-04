@@ -8,7 +8,7 @@ public class GameState : MonoBehaviour {
 	public ItemList items;
 
 	private Item curr;
-	private Item theirs;
+	private string theirs;
 
 	// Use this for initialization
 	void Start () {
@@ -18,8 +18,11 @@ public class GameState : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (theirs != null) {
-			textBox.text = theirs.name;
+			textBox.text = theirs;
 		}
+
+		PhotonView pView = this.GetComponent<PhotonView> ();
+		pView.RPC ("updateTheirItem", PhotonTargets.Others, curr.name);
 	}
 
 	[PunRPC]
@@ -27,21 +30,18 @@ public class GameState : MonoBehaviour {
 		items.addItem ();
 		curr = items.getRandomItem (curr);
 	}
+
+	[PunRPC]
+	public void updateTheirItem(string t) {
+		theirs = t;
+		textBox.text = theirs;
+	}
 	
 	public Item getCurrItem() {
 		return curr;
 	}
 
-	public Item getTheirItem() {
+	public string getTheirItem() {
 		return theirs;
-	}
-
-	void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
-		Debug.Log ("Ayy lmao");
-		if (stream.isWriting) {
-			stream.SendNext (curr);
-		} else {
-			theirs = (Item) stream.ReceiveNext();
-		}
 	}
 }
