@@ -19,7 +19,7 @@ public class Box : MonoBehaviour {
 		}
 	}
 
-	void switchBelts() {
+	public void switchBelts() {
 		switch (side) {
 		case 1:
 			side = 2;
@@ -30,5 +30,20 @@ public class Box : MonoBehaviour {
 			transform.position = belt1;
 			break;
 		}
+	}
+
+	private bool IsHand(Collider other){
+    	if(other.transform.parent && other.transform.parent.parent && other.transform.parent.parent.GetComponent<HandModel>())
+      		return true;
+    	else{
+      		return false;
+  	  	}
+  	}
+
+ 	void OnTriggerEnter(Collider other){
+  		if(IsHand(other)){
+  			switchBelts();
+  		}
+	
 	}
 }
