@@ -33,10 +33,10 @@ public class GameState : MonoBehaviour {
 
 	public void nextItem() {
 		items.addItem ();
+		Debug.Log ("Ayyyyyyyyyyy");
 		curr = items.getRandomItem (curr);
 
 		PhotonView pView = this.GetComponent<PhotonView> ();
-		Debug.Log (curr.name);
 		pView.RPC ("updateTheirItem", PhotonTargets.Others, curr.name);
 	}
 

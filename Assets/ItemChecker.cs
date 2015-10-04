@@ -21,8 +21,7 @@ public class ItemChecker : MonoBehaviour {
 		Item item = (Item)other.GetComponent<Item> ();
 
 		PhotonView pView = state.GetComponent<PhotonView> ();
-
-		if (item.name.Equals (state.getCurrItem ())) {
+		if (item.Equals (state.getCurrItem ())) {
 			state.nextItem ();
 		}
 	}
