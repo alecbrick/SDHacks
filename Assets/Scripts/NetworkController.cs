@@ -9,6 +9,7 @@ public class NetworkController : Photon.PunBehaviour
     {
         PhotonNetwork.logLevel = PhotonLogLevel.Full;
         PhotonNetwork.ConnectUsingSettings("0.1");
+		myPhotonView = this.GetComponent<PhotonView> ();
     }
     void OnGUI()
     {
