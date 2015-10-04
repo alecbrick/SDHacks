@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\AIPaddle.cs" />
      <Compile Include="Assets\Scripts\Ball.cs" />
      <Compile Include="Assets\Scripts\BallRebound.cs" />
+     <Compile Include="Assets\Scripts\Box.cs" />
      <Compile Include="Assets\Scripts\Conveyor.cs" />
      <Compile Include="Assets\Scripts\Item.cs" />
      <Compile Include="Assets\Scripts\ItemDropper.cs" />
