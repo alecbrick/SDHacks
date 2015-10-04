@@ -36,6 +36,15 @@ public class NetworkController : Photon.PunBehaviour
         PhotonNetwork.CreateRoom(null);
     }
 
+	[PunRPC]
+	public void Marco() {
+		Debug.Log ("Marco!");
+	}
+
+	[PunRPC]
+	public void Polo() {
+		Debug.Log ("Polo");
+	}
 
     //void OnJoinedRoom()
     //{
