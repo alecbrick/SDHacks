@@ -10,9 +10,12 @@ public class GameState : MonoBehaviour {
 	private Item curr;
 	private string theirs;
 
+	int i;
+
 	// Use this for initialization
 	void Start () {
 		curr = items.getRandomItem ();
+		i = 100;
 	}
 	
 	// Update is called once per frame
@@ -20,9 +23,12 @@ public class GameState : MonoBehaviour {
 		if (theirs != null) {
 			textBox.text = theirs;
 		}
-
-		PhotonView pView = this.GetComponent<PhotonView> ();
-		pView.RPC ("updateTheirItem", PhotonTargets.Others, curr.name);
+		if (i == 0) {
+			PhotonView pView = this.GetComponent<PhotonView> ();
+			pView.RPC ("updateTheirItem", PhotonTargets.Others, curr.name);
+			i = 100;
+		}
+		i--;
 	}
 
 	[PunRPC]
