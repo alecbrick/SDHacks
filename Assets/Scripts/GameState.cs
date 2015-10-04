@@ -36,7 +36,8 @@ public class GameState : MonoBehaviour {
 		return theirs;
 	}
 
-	void OnProtonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
+	void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
+		Debug.Log ("Ayy lmao");
 		if (stream.isWriting) {
 			stream.SendNext (curr);
 		} else {
