@@ -37,6 +37,7 @@ public class GameState : MonoBehaviour {
 		curr = items.getRandomItem (curr);
 
 		PhotonView pView = this.GetComponent<PhotonView> ();
+		Debug.Log (curr.name);
 		pView.RPC ("updateTheirItem", PhotonTargets.Others, curr.name);
 	}
 
@@ -44,6 +45,7 @@ public class GameState : MonoBehaviour {
 	public void updateTheirItem(string t) {
 		theirs = t;
 		textBox.text = theirs;
+		Debug.Log (theirs);
 	}
 	
 	public Item getCurrItem() {
