@@ -31,7 +31,6 @@ public class GameState : MonoBehaviour {
 		i--;
 	}
 
-	[PunRPC]
 	public void nextItem() {
 		items.addItem ();
 		curr = items.getRandomItem (curr);
